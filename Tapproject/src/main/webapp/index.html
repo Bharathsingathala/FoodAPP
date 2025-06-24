@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Swiggy Application Clone</title>
+<link
+	href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap"
+	rel="stylesheet" />
+<style>
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	font-family: 'Inter', sans-serif;
+}
+
+body {
+	background: linear-gradient(to bottom, #ffe9c3, #ffffff);
+	padding: 1rem 2rem;
+	color: #333;
+}
+
+.header {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	margin-bottom: 1.5rem;
+}
+
+.header-left {
+	display: flex;
+	align-items: center;
+	gap: 0.5rem;
+}
+
+.header-left img {
+	height: 40px;
+}
+
+.header-left h1 {
+	font-weight: 700;
+	font-size: 1.5rem;
+	color: rgb(255, 0, 0);
+	cursor: pointer;
+}
+
+.profile-login {
+	display: flex;
+	align-items: center;
+	gap: 1rem;
+}
+
+.profile-login button, .login-button {
+	background-color: #fc8019;
+	border: none;
+	color: white;
+	padding: 0.5rem 1rem;
+	border-radius: 20px;
+	font-weight: 600;
+	cursor: pointer;
+	transition: background-color 0.3s ease;
+	text-decoration: none;
+	display: inline-block;
+	text-align: center;
+}
+
+.profile-login button:hover, .login-button:hover {
+	background-color: #e06f0f;
+}
+
+.profile-login img {
+	height: 36px;
+	width: 36px;
+	border-radius: 50%;
+	cursor: pointer;
+}
+
+.search-bar {
+	margin-bottom: 2rem;
+	display: flex;
+	justify-content: center;
+}
+
+.search-bar input {
+	width: 100%;
+	max-width: 600px;
+	padding: 0.7rem 1rem;
+	border-radius: 25px;
+	border: 2px solid #fc8019;
+	font-size: 1rem;
+	outline: none;
+	transition: border-color 0.3s ease;
+}
+
+.search-bar input:focus {
+	border-color: #e06f0f;
+}
+
+.promo-banners {
+	display: flex;
+	gap: 1rem;
+	justify-content: center;
+	margin-bottom: 2rem;
+	flex-wrap: wrap;
+}
+
+.promo-banner {
+	background: #fc8019;
+	color: white;
+	border-radius: 15px;
+	padding: 1.5rem 2rem;
+	text-align: center;
+	min-width: 280px;
+	flex: 1 1 280px;
+	box-shadow: 0 5px 15px rgba(252, 128, 25, 0.4);
+	cursor: pointer;
+	transition: background 0.3s ease;
+}
+
+.promo-banner h2 {
+	font-size: 1.5rem;
+	margin-bottom: 0.5rem;
+	font-weight: 700;
+}
+
+.promo-banner p {
+	font-weight: 600;
+	margin-bottom: 1rem;
+}
+
+.promo-banner button {
+	background: white;
+	color: #fc8019;
+	border: none;
+	padding: 0.6rem 1.2rem;
+	font-weight: 700;
+	border-radius: 20px;
+	cursor: pointer;
+	transition: background 0.3s ease;
+}
+
+.promo-banner button:hover {
+	background: #ffd8b8;
+}
+
+.cards-container {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+	gap: 1.5rem;
+	max-width: 1100px;
+	margin: 0 auto 3rem auto;
+}
+
+.card {
+	background: white;
+	border-radius: 15px;
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+	text-align: center;
+	padding: 1rem;
+	cursor: default;
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+	height: 350px;
+	transition: box-shadow 0.3s ease;
+}
+
+.card:hover {
+	box-shadow: 0 8px 20px rgba(252, 128, 25, 0.4);
+}
+
+.card a.clickable-image {
+	display: block;
+	width: 100%;
+	height: 140px;
+	margin-bottom: 0.5rem;
+	border-radius: 10px;
+	overflow: hidden;
+	cursor: pointer;
+}
+
+.card a.clickable-image img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	transition: transform 0.3s ease;
+	border-radius: 10px;
+}
+
+.card a.clickable-image:hover img {
+	transform: scale(1.05);
+}
+
+.card h3 {
+	color: #fc8019;
+	margin-bottom: 0.5rem;
+	font-weight: 700;
+	font-size: 1.2rem;
+}
+
+.rating-delivery {
+	width: 100%;
+	display: flex;
+	justify-content: space-between;
+	font-weight: 600;
+	margin-bottom: 0.5rem;
+	color: #fc8019;
+	font-size: 0.9rem;
+}
+
+.description {
+	font-size: 0.9rem;
+	color: #555;
+	text-align: center;
+	margin-bottom: 1rem;
+	min-height: 60px;
+	flex-grow: 1;
+}
+
+.add-to-cart {
+	background-color: #fc8019;
+	border: none;
+	color: white;
+	padding: 0.6rem 1.2rem;
+	border-radius: 20px;
+	font-weight: 700;
+	cursor: pointer;
+	transition: background-color 0.3s ease;
+	width: 100%;
+	user-select: none;
+}
+
+.add-to-cart:hover {
+	background-color: #e06f0f;
+}
+
+.footer-nav {
+	position: fixed;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+	background: #fff;
+	border-top: 1px solid #ddd;
+	display: flex;
+	justify-content: space-around;
+	padding: 0.8rem 0;
+	box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.1);
+	font-weight: 600;
+	color: #fc8019;
+}
+
+.footer-nav div {
+	cursor: pointer;
+	transition: color 0.3s ease;
+}
+
+.footer-nav div:hover {
+	color: #e06f0f;
+}
+</style>
+</head>
+<body>
+
+
+	<form action="hello" method="post">
+
+
+
+		<header class="header">
+			<div class="header-left">
+				<img
+					src="https://logos-world.net/wp-content/uploads/2020/11/Swiggy-Logo.png"
+					alt="Swiggy Logo" />
+				<h1>Swiggy</h1>
+			</div>
+
+
+
+
+
+
+			<div class="profile-login">
+				<a href="login.html" class="login-button">Login</a> <img
+					src="https://randomuser.me/api/portraits/men/75.jpg" alt="Profile"
+					title="Profile" />
+			</div>
+
+
+
+
+		</header>
+
+
+		<div class="search-bar">
+			<input type="search"
+				placeholder="Search for restaurants, dishes, drinks..." />
+		</div>
+
+		<section class="promo-banners">
+			<div class="promo-banner">
+				<h2>Celebrate Bhau Beej!</h2>
+				<p>With great food & knots of love!</p>
+				<button>ORDER NOW</button>
+			</div>
+			<div class="promo-banner">
+				<h2>Festive Specials</h2>
+				<p>Exclusive discounts on Biryani & Drinks</p>
+				<button>CHECK DEALS</button>
+			</div>
+			<div class="promo-banner">
+				<h2>Quick Delivery</h2>
+				<p>Hot & fresh, delivered fast!</p>
+				<button>ORDER NOW</button>
+			</div>
+		</section>
+
+		<section class="cards-container" aria-label="Food and Services">
+
+			<div class="card">
+				<a href="https://fooddelivery.example.com" target="_blank"
+					rel="noopener noreferrer" class="clickable-image"> <img
+					src="https://images.unsplash.com/photo-1600891964599-f61ba0e24092?auto=format&fit=crop&w=300&q=80"
+					alt="Food Delivery" />
+				</a>
+				<h3>Food Delivery</h3>
+				<div class="rating-delivery">
+					<span class="rating">⭐ 4.5</span> <span class="delivery-time">30-40
+						min</span>
+				</div>
+				<p class="description">Delicious meals delivered right to your
+					doorstep, fresh and hot.</p>
+				<button class="add-to-cart">Add to Cart</button>
+			</div>
+
+			<div class="card">
+				<a href="https://instamart.example.com" target="_blank"
+					rel="noopener noreferrer" class="clickable-image"> <img
+					src="https://img-cdn.thepublive.com/fit-in/1200x675/smstreet/media/media_files/b8hxDcPQWP4Gh1u0XvvW.jpg"
+					alt="Instamart" />
+				</a>
+				<h3>Insta Mart</h3>
+				<div class="rating-delivery">
+					<span class="rating">⭐ 4.2</span> <span class="delivery-time">20-30
+						min</span>
+				</div>
+				<p class="description">Groceries delivered quickly to your home.</p>
+				<button class="add-to-cart">Add to Cart</button>
+			</div>
+
+			<div class="card">
+				<a href="https://dineout.example.com" target="_blank"
+					rel="noopener noreferrer" class="clickable-image"> <img
+					src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=300&q=80"
+					alt="Dineout" /></a>
+				<h3>Dineout</h3>
+				<div class="rating-delivery">
+					<span class="rating">⭐ 4.7</span> <span class="delivery-time">Reservation
+						Available</span>
+				</div>
+				<p class="description">Enjoy up to 50% off on dining at premium
+					restaurants near you.</p>
+				<button class="add-to-cart">Add to Cart</button>
+			</div>
+
+
+
+			<div class="card">
+				<a href="https://genie.example.com" target="_blank"
+					rel="noopener noreferrer" class="clickable-image"> <img
+					src="https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&fit=crop&w=300&q=80"
+					alt="Genie Service" />
+				</a>
+				<h3>Genie Service</h3>
+				<div class="rating-delivery">
+					<span class="rating">⭐ 4.3</span> <span class="delivery-time">Fast
+						& Reliable</span>
+				</div>
+				<p class="description">Get anything delivered to your doorstep
+					quickly and safely.</p>
+				<button class="add-to-cart">Add to Cart</button>
+			</div>
+
+
+			<div class="card">
+				<a href="https://pizzahut.example.com" target="_blank"
+					rel="noopener noreferrer" class="clickable-image"> <img
+					src=https://b.zmtcdn.com/data/pictures/chains/7/20407/fdf5e5079a0352d872204dad39bc0f08.jpg?fit=around|750:500&crop=750:500;,
+					alt="Pizza Hut" />
+				</a>
+				<h3>Pizza Hut</h3>
+				<div class="rating-delivery">
+					<span class="rating">⭐ 4.4</span> <span class="delivery-time">25-35
+						min</span>
+				</div>
+				<p class="description">Hot, cheesy pizzas with a variety of
+					toppings to choose from.</p>
+				<button class="add-to-cart">Add to Cart</button>
+			</div>
+
+			<div class="card">
+				<a href="https://subway.example.com" target="_blank"
+					rel="noopener noreferrer" class="clickable-image"> <img
+					src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?auto=format&fit=crop&w=300&q=80"
+					alt="Subway" />
+				</a>
+				<h3>Subway</h3>
+				<div class="rating-delivery">
+					<span class="rating">⭐ 4.1</span> <span class="delivery-time">20-30
+						min</span>
+				</div>
+				<p class="description">Fresh sandwiches and salads made to your
+					preference.</p>
+				<button class="add-to-cart">Add to Cart</button>
+			</div>
+
+			<div class="card">
+				<a href="https://burgerking.example.com" target="_blank"
+					rel="noopener noreferrer" class="clickable-image"> <img
+					src="https://images.unsplash.com/photo-1550547660-d9450f859349?auto=format&fit=crop&w=300&q=80"
+					alt="Burger King" />
+				</a>
+				<h3>Burger King</h3>
+				<div class="rating-delivery">
+					<span class="rating">⭐ 4.0</span> <span class="delivery-time">25-35
+						min</span>
+				</div>
+				<p class="description">Flame-grilled burgers served fresh with
+					crispy fries.</p>
+				<button class="add-to-cart">Add to Cart</button>
+			</div>
+
+			<div class="card">
+				<a href="https://starbucks.example.com" target="_blank"
+					rel="noopener noreferrer" class="clickable-image"> <img
+					src="https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&w=300&q=80"
+					alt="Starbucks" />
+				</a>
+				<h3>Starbucks</h3>
+				<div class="rating-delivery">
+					<span class="rating">⭐ 4.6</span> <span class="delivery-time">15-25
+						min</span>
+				</div>
+				<p class="description">Freshly brewed coffee and delicious
+					snacks to brighten your day.</p>
+				<button class="add-to-cart">Add to Cart</button>
+			</div>
+
+			<div class="card">
+				<a href="https://kfc.example.com" target="_blank"
+					rel="noopener noreferrer" class="clickable-image"> <img
+					src="https://images.unsplash.com/photo-1586190848861-99aa4a171e90?auto=format&fit=crop&w=300&q=80"
+					alt="KFC" />
+				</a>
+				<h3>KFC</h3>
+				<div class="rating-delivery">
+					<span class="rating">⭐ 4.3</span> <span class="delivery-time">30-40
+						min</span>
+				</div>
+				<p class="description">Crispy fried chicken with a secret blend
+					of herbs and spices.</p>
+				<button class="add-to-cart">Add to Cart</button>
+			</div>
+
+			<div class="card">
+				<a href="https://dominos.example.com" target="_blank"
+					rel="noopener noreferrer" class="clickable-image"> <img
+					src="https://d4t7t8y8xqo0t.cloudfront.net/app//resized/818X450/group/107/shutterstock_84904912.jpg"
+					alt="Domino's Pizza" />
+				</a>
+				<h3>Domino's Pizza</h3>
+				<div class="rating-delivery">
+					<span class="rating">⭐ 4.5</span> <span class="delivery-time">20-30
+						min</span>
+				</div>
+				<p class="description">Tasty pizzas delivered hot and fresh,
+					straight to your door.</p>
+				<button class="add-to-cart">Add to Cart</button>
+			</div>
+
+			<div class="card">
+				<a href="https://mcdonalds.example.com" target="_blank"
+					rel="noopener noreferrer" class="clickable-image"> <img
+					src="https://images.unsplash.com/photo-1551782450-a2132b4ba21d?auto=format&fit=crop&w=300&q=80"
+					alt="McDonald's" />
+				</a>
+				<h3>McDonald's</h3>
+				<div class="rating-delivery">
+					<span class="rating">⭐ 4.4</span> <span class="delivery-time">25-35
+						min</span>
+				</div>
+				<p class="description">Famous burgers, fries, and shakes loved
+					by all ages.</p>
+				<button class="add-to-cart">Add to Cart</button>
+			</div>
+
+			<div class="card">
+				<a href="https://pancakehouse.example.com" target="_blank"
+					rel="noopener noreferrer" class="clickable-image"> <img
+					src="https://images.unsplash.com/photo-1504754524776-8f4f37790ca0?auto=format&fit=crop&w=300&q=80"
+					alt="Pancake House" />
+				</a>
+				<h3>Pancake House</h3>
+				<div class="rating-delivery">
+					<span class="rating">⭐ 4.8</span> <span class="delivery-time">15-25
+						min</span>
+				</div>
+				<p class="description">Fluffy pancakes and breakfast favorites
+					served fresh.</p>
+				<button class="add-to-cart">Add to Cart</button>
+			</div>
+
+
+		</section>
+	</form>
+</body>
+</html>

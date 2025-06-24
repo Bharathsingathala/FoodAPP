@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Order Confirmed!</title>
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+2&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Baloo 2', cursive;
+      background: linear-gradient(to right, #ff9a9e, #fad0c4);
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+   .blast-card {
+  background: white;
+  padding: 40px 50px;
+  border-radius: 25px;
+  box-shadow: 0 0 15px rgba(255, 62, 91, 0.4);
+  max-width: 400px;
+  text-align: center;
+  position: relative;
+  transition: box-shadow 0.3s ease;
+}
+
+/* Soft Blue Glow */
+.blast-card:hover {
+  box-shadow: 0 0 25px 5px rgba(0, 150, 255, 0.8);
+}
+
+/* Purple Glow */
+.blast-card:hover {
+  box-shadow: 0 0 25px 5px rgba(150, 0, 255, 0.8);
+}
+
+/* Green Glow */
+.blast-card:hover {
+  box-shadow: 0 0 25px 5px rgba(0, 255, 150, 0.8);
+}
+
+/* Orange Glow */
+.blast-card:hover {
+  box-shadow: 0 0 25px 5px rgba(255, 150, 0, 0.8);
+}
+
+/* Pink Glow */
+.blast-card:hover {
+  box-shadow: 0 0 25px 5px rgba(255, 0, 150, 0.8);
+}
+
+
+    .emoji-blast {
+      font-size: 4rem;
+      animation: bounce 1.5s infinite;
+      margin-bottom: 20px;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      color: #ff385c;
+      margin-bottom: 10px;
+    }
+
+    p {
+      font-size: 1.1rem;
+      color: #555;
+      margin-bottom: 25px;
+      line-height: 1.6;
+    }
+
+    .btn-home {
+      background-color: #ff385c;
+      color: white;
+      padding: 12px 30px;
+      border: none;
+      border-radius: 30px;
+      text-decoration: none;
+      font-size: 1.1rem;
+      font-weight: bold;
+      transition: 0.3s ease;
+      display: inline-block;
+    }
+
+    .btn-home:hover {
+      background-color: #e12747;
+      transform: scale(1.05);
+    }
+
+    #confetti-canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+
+    @media (max-width: 500px) {
+      .blast-card {
+        padding: 30px 20px;
+        width: 90%;
+      }
+
+      h1 {
+        font-size: 2rem;
+      }
+
+      .btn-home {
+        font-size: 1rem;
+        padding: 10px 25px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="blast-card">
+    <div class="emoji-blast">🎉</div>
+    <h1>Order Confirmed!</h1>
+    <p>Your food is being prepared and will be delivered to you shortly. Sit tight and enjoy! 🍽</p>
+    <a href="all-menus" class="btn-home"><i class="fas fa-arrow-left"></i> Order More</a>
+  </div>
+
+  <canvas id="confetti-canvas"></canvas>
+
+  <script>
+    const canvas = document.getElementById('confetti-canvas');
+    const ctx = canvas.getContext('2d');
+    let W = window.innerWidth;
+    let H = window.innerHeight;
+    canvas.width = W;
+    canvas.height = H;
+
+    const confetti = [];
+    const confettiCount = 150;
+
+    function randomRange(min, max) {
+      return Math.random() * (max - min) + min;
+    }
+
+    class ConfettiPiece {
+      constructor() {
+        this.x = W / 2;
+        this.y = H / 2;
+        this.radius = randomRange(2, 6);
+        this.color = hsl(${Math.random() * 360}, 80%, 60%);
+        this.angle = Math.random() * 2 * Math.PI;
+        this.speed = randomRange(2, 6);
+      }
+
+      update() {
+        this.x += Math.cos(this.angle) * this.speed;
+        this.y += Math.sin(this.angle) * this.speed;
+      }
+
+      draw() {
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+        ctx.fillStyle = this.color;
+        ctx.fill();
+      }
+    }
+
+    for (let i = 0; i < confettiCount; i++) {
+      confetti.push(new ConfettiPiece());
+    }
+
+    function animate() {
+      ctx.clearRect(0, 0, W, H);
+      confetti.forEach(c => {
+        c.update();
+        c.draw();
+      });
+      requestAnimationFrame(animate);
+    }
+
+    animate();
+
+    window.addEventListener('resize', () => {
+      W = window.innerWidth;
+      H = window.innerHeight;
+      canvas.width = W;
+      canvas.height = H;
+    });
+  </script>
+
+</body>
+</html>
