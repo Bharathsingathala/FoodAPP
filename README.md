@@ -138,4 +138,4 @@ Singathala Bharathasimhareddy
 📍 Location: India
 
 ---
-> _“Code is like humor. When you have to explain it, it’s bad.” –Shaik Mahaboob Basha_
+> _“Code is like humor. When you have to explain it, it’s bad.” S.bharathsimhareddy"
