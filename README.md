@@ -62,7 +62,7 @@ Copy
 https://github.com/Bharathsingathala/FoodAPP/blob/1ed231f0c6fd37c41e580e5851a3dd2ceaa9faa1/Screenshot%202025-06-24%20221459%20-%20Copy.png
 
 ### 🍽️ Restaurants
-![Restaurants](images/restaurants.png)
+![Restaurants](https://github.com/Bharathsingathala/FoodAPP/blob/049b8078a052c4de4b73f92ed00b6e0bd5986491/Screenshot%202025-06-24%20221555%20-%20Copy.png)
 
 ### 🛒 Menu & Cart
 ![Menu](images/menu.png)
