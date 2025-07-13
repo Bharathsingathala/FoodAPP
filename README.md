@@ -59,7 +59,7 @@ Copy
 ## 📸 Screenshots
 
 ### 🏠 Home Page
-![Home](images/home.png)
+![Home](Screenshot 2025-06-24 221459 - Copy.png)
 
 ### 🍽️ Restaurants
 ![Restaurants](images/restaurants.png)
