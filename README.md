@@ -59,7 +59,7 @@ Copy
 ## 📸 Screenshots
 
 ### 🏠 Home Page
-![Home](Screenshot 2025-06-24 221459 - Copy.png)
+https://github.com/Bharathsingathala/FoodAPP/blob/1ed231f0c6fd37c41e580e5851a3dd2ceaa9faa1/Screenshot%202025-06-24%20221459%20-%20Copy.png
 
 ### 🍽️ Restaurants
 ![Restaurants](images/restaurants.png)
